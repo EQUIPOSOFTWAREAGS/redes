@@ -2,61 +2,144 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mis Redes Sociales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Angelo Gravier Santana — Redes</title>
+  <meta name="theme-color" content="#ff0040" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: linear-gradient(135deg, #ff0040, #ffe600);
-      color: white;
-      text-align: center;
-      padding: 2rem;
+    :root{
+      --bg-1:#ff0040; /* rojo */
+      --bg-2:#ffe600; /* amarillo */
+      --glass:rgba(255,255,255,.08);
+      --stroke:rgba(255,255,255,.25);
+      --text:#ffffff;
+      --card-max:680px;
     }
-    .container {
-      max-width: 600px;
-      margin: auto;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      color:var(--text);
+      /* Fondo con gradiente y una luz suave radial */
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(255,255,255,.25), transparent 60%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      min-height:100dvh;
+      display:grid;
+      place-items:center;
+      padding:24px;
     }
-    h1 {
-      margin-bottom: 0.5rem;
+    .card{
+      width:100%;
+      max-width:var(--card-max);
+      background:var(--glass);
+      border:1px solid var(--stroke);
+      border-radius:24px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding:28px;
+      box-shadow:0 20px 60px rgba(0,0,0,.25);
     }
-    p {
-      margin-top: 0;
-      margin-bottom: 2rem;
+    header{
+      display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center;
     }
-    .link {
-      display: block;
-      background-color: white;
-      color: black;
-      text-decoration: none;
-      margin: 1rem auto;
-      padding: 1rem;
-      border-radius: 10px;
-      font-size: 1.2rem;
-      width: 80%;
-      max-width: 400px;
-      transition: transform 0.2s, box-shadow 0.2s;
+    .avatar-ring{position:relative; width:116px; height:116px; border-radius:50%; padding:3px;
+      background:conic-gradient(from 140deg, #ff2a68, #ffe600, #ff2a68 75%);
+      box-shadow:0 8px 22px rgba(0,0,0,.25);
     }
-    .link:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    .avatar-ring img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;
+      border:4px solid rgba(255,255,255,.65);
+      background:#eee;
     }
-    img {
-      border-radius: 50%;
-      width: 100px;
-      margin-bottom: 1rem;
+    h1{font-size:clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem);margin:0}
+    .subtitle{opacity:.9;margin:.25rem 0 0;font-weight:600}
+
+    .links{list-style:none; padding:0; margin:28px 0 0; display:grid; gap:14px}
+    @media (min-width:640px){
+      .links{grid-template-columns:1fr 1fr}
+    }
+    .btn{
+      --bg: rgba(255,255,255,.9);
+      --fg: #111;
+      display:flex; align-items:center; gap:.75rem; text-decoration:none;
+      padding:14px 16px; border-radius:16px; background:var(--bg); color:var(--fg);
+      font-weight:700; letter-spacing:.2px;
+      box-shadow:0 6px 18px rgba(0,0,0,.18);
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .btn:hover{ transform: translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.25) }
+    .btn:active{ transform: translateY(0) scale(.98) }
+    .btn:focus-visible{ outline:3px solid rgba(255,255,255,.8); outline-offset:3px }
+    .btn svg{ width:22px; height:22px; flex:0 0 22px }
+
+    /* Colores de marca */
+    .instagram{ --bg:linear-gradient(135deg,#fdf497 0%,#fd5949 50%,#d6249f 100%); --fg:#fff }
+    .facebook{ --bg:#1877F2; --fg:#fff }
+    .tiktok{ --bg:#111; --fg:#fff }
+    .x{ --bg:#000; --fg:#fff }
+
+    footer{ margin-top:18px; opacity:.9; font-size:.95rem; text-align:center }
+    .small{ font-size:.86rem; opacity:.85 }
+
+    /* Sutil borde interior para resaltar los botones en fondos claros */
+    .btn{ position:relative }
+    .btn::after{
+      content:""; position:absolute; inset:0; border-radius:inherit;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
+      pointer-events:none;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="https://via.placeholder.com/100" alt="Foto de perfil" />
-    <h1>Angelo Gravier Santana</h1>
-    <p>¡Bienvenid@! Conecta conmigo:</p>
+  <main class="card" role="main">
+    <header>
+      <div class="avatar-ring" aria-hidden="true">
+        <!-- Reemplaza el src con tu foto de perfil real si quieres -->
+        <img src="https://via.placeholder.com/400x400.png?text=Angelo" alt="Foto de perfil de Angelo Gravier Santana" />
+      </div>
+      <div>
+        <h1>Angelo Gravier Santana</h1>
+        <p class="subtitle">¡Bienvenid@! Conecta conmigo en mis redes</p>
+      </div>
+    </header>
 
-    <a class="link" href="https://www.instagram.com/angelogravier?igsh=MWJpcXFvcTJkb2xkYg==" target="_blank">Instagram</a>
-    <a class="link" href="https://www.facebook.com/share/1Cq9X3PFko/" target="_blank">Facebook</a>
-    <a class="link" href="https://tiktok.com/@angelograviersantana" target="_blank">TikTok</a>
-  </div>
+    <ul class="links" aria-label="Lista de enlaces a redes sociales">
+      <li>
+        <a class="btn instagram" href="https://www.instagram.com/angelogravier?igsh=MWJpcXFvcTJkb2xkYg==" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de Angelo Gravier en una nueva pestaña">
+          <!-- Instagram SVG -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.2a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 18 6.2z"/></svg>
+          Instagram
+        </a>
+      </li>
+      <li>
+        <a class="btn facebook" href="https://www.facebook.com/share/1Cq9X3PFko/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Facebook de Angelo Gravier en una nueva pestaña">
+          <!-- Facebook SVG -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.7c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          Facebook
+        </a>
+      </li>
+      <li>
+        <a class="btn tiktok" href="https://tiktok.com/@angelograviersantana" target="_blank" rel="noopener noreferrer" aria-label="Abrir TikTok de Angelo Gravier en una nueva pestaña">
+          <!-- TikTok SVG -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 8.2a7 7 0 0 1-4.6-2v7.4a6.8 6.8 0 1 1-6.8-6.8 6.7 6.7 0 0 1 1.2.1v3a3.8 3.8 0 1 0 2.6 3.6V2.9a7 7 0 0 0 5.3 2.5v2.8z"/></svg>
+          TikTok
+        </a>
+      </li>
+      <li>
+        <a class="btn x" href="https://x.com/Angelogravier" target="_blank" rel="noopener noreferrer" aria-label="Abrir perfil en X de Angelo Gravier en una nueva pestaña">
+          <!-- X (Twitter) SVG -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21l-6.36 7.27L22.5 22h-5.873l-4.59-6.003L6.6 22H3.84l6.81-7.79L1.5 2h6.04l4.15 5.59L18.244 2zm-1.027 18h1.645L6.873 4h-1.7l11.044 16z"/></svg>
+          X
+        </a>
+      </li>
+    </ul>
+
+    <footer>
+      <p class="small">Consejo: cambia la imagen por tu foto real y ajusta los textos si lo necesitas. ✨</p>
+    </footer>
+  </main>
 </body>
 </html>
